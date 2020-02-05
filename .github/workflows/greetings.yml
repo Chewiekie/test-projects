@@ -1,4 +1,4 @@
-name: Greetings
+name: TestCI
 
 on: [pull_request, issues]
 
@@ -11,3 +11,10 @@ jobs:
         repo-token: ${{ secrets.token }}
         issue-message: 'Message that will be displayed on users'' first issue'
         pr-message: 'Message that will be displayed on users'' first pr'
+  assignee_to_reviewer:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Assignee to Reviewer
+      uses: pullreminders/assignee-to-reviewer-action@v1.0.4
+      env:
+        GITHUB_TOKEN: ${{ secrets.token }}
