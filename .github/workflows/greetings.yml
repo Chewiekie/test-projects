@@ -1,6 +1,6 @@
 name: TestCI
 
-on: [pull_request, issues]
+on: [pull_request]
 
 jobs:
   greeting:
