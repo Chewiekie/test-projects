@@ -3,14 +3,6 @@ name: TestCI
 on: [pull_request]
 
 jobs:
-  greeting:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/first-interaction@v1
-      with:
-        repo-token: ${{ secrets.token }}
-        issue-message: 'Message that will be displayed on users'' first issue'
-        pr-message: 'Message that will be displayed on users'' first pr'
   automation:
     runs-on: ubuntu-latest
     steps:
