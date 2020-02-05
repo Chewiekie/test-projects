@@ -11,10 +11,11 @@ jobs:
         repo-token: ${{ secrets.token }}
         issue-message: 'Message that will be displayed on users'' first issue'
         pr-message: 'Message that will be displayed on users'' first pr'
-  assignee_to_reviewer:
+  automation:
     runs-on: ubuntu-latest
     steps:
-    - name: Assignee to Reviewer
-      uses: pullreminders/assignee-to-reviewer-action@v1.0.4
-      env:
-        GITHUB_TOKEN: ${{ secrets.token }}
+    - name: Assign PR to creator
+      uses: thomaseizinger/assign-pr-creator-action@v1.0.0
+      if: github.event_name == 'pull_request' && github.event.action == 'opened'
+      with:
+        repo-token: ${{ secrets.token }}
