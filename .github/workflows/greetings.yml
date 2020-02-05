@@ -11,16 +11,15 @@ jobs:
       if: github.event_name == 'pull_request' && github.event.action == 'opened'
       with:
         repo-token: ${{ secrets.token }}
-  commentss: 
-      runs-on: ubuntu-latest
-      steps:
-       - name: Create commit comment
-         uses: peter-evans/commit-comment@v1
-         with:
-          token: ${{ secrets.token }}
-          body: |
-            This is a multi-line test comment
-            - With GitHub **Markdown**
-            - Created by [commit-comment][1]
+  example_comment_pr:
+    runs-on: ubuntu-latest
+    name: An example job to comment a PR
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
 
-            [1]: https://github.com/peter-evans/commit-comment
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@master
+        with:
+          message: 'Example of message !'
+          GITHUB_TOKEN: ${{ secrets.token }}
